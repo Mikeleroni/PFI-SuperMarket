@@ -3,12 +3,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Video;
+using UnityEngine.SceneManagement;
 
 public class cutSceneManager : MonoBehaviour
 {
-    //SOURCE: https://forum.unity.com/threads/free-basic-camera-fade-in-script.509423/ 
-    public bool isArrested;
-    [SerializeField] CinemachineVirtualCamera cam; 
+    // SOURCES: https://forum.unity.com/threads/free-basic-camera-fade-in-script.509423/ 
+    // https://www.reddit.com/r/UnityHelp/comments/y82yc6/how_to_move_a_cinemachine_camera_with_script_fov/
+    public bool isDead;
+    [SerializeField] CinemachineVirtualCamera cam;
+    [SerializeField] VideoPlayer video;
     CinemachineTransposer transposer;
     
     public AnimationCurve FadeCurve = new AnimationCurve(new Keyframe(0, 1), new Keyframe(0.6f, 0.7f, -1.8f, -1.2f), new Keyframe(1, 0));
@@ -22,25 +26,33 @@ public class cutSceneManager : MonoBehaviour
 
     private void Awake()
     {
-        isArrested = false;
+        isDead = false;
+        video.enabled = false;
         transposer = cam.GetCinemachineComponent<CinemachineTransposer>();
     }
 
     void Update()
     {
-        if(isArrested)
+        if(isDead)
         {
             cam.m_Lens.FieldOfView = Mathf.Lerp(cam.m_Lens.FieldOfView, 90, zoomSpeedFinish);
 
-            transposer.m_FollowOffset = Vector3.Lerp(transposer.m_FollowOffset, new Vector3(-5, 5, 5), 0.01f);
-            StartCoroutine(returnToNormal());
+            transposer.m_FollowOffset = Vector3.Lerp(transposer.m_FollowOffset, new Vector3(-5, 5, 5), 0.005f);
+            StartCoroutine(PlayVideo());
+            StartCoroutine(ChangeScene());
         }
     }
 
-    IEnumerator returnToNormal()
+    IEnumerator PlayVideo()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
         Reset();
+        video.enabled = true;
+    }
+    IEnumerator ChangeScene()
+    {
+        yield return new WaitForSeconds(10f);
+        SceneManager.LoadScene(2);
     }
 
     void Reset()
@@ -48,14 +60,11 @@ public class cutSceneManager : MonoBehaviour
         _done = false;
         _alpha = 1;
         _time = 0;
-
-        transposer.m_FollowOffset = new Vector3(0,0,-10);
-        cam.m_Lens.FieldOfView = 60;
     }
 
     void OnGUI()
     {
-        if (isArrested)
+        if (isDead)
         {
             elapsedTime += Time.deltaTime;
             if(elapsedTime >= 5f)

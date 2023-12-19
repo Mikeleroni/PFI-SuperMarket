@@ -29,26 +29,9 @@ public class Personnage : MonoBehaviour
     {
         Deplacement();
         RotationCamera();
-        Frapper();
+        
     }
-    void Frapper()
-    {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-
-            animatorFrapper.SetBool("Frapper", true);
-            if(!source.isPlaying)
-            {
-                source.PlayOneShot(clip);
-            }
-            
-        }
-        else
-        {
-            animatorFrapper.SetBool("Frapper", false);
-        }
-
-    }
+    
     void RotationCamera()
     {
         rotationCamera += new Vector3(-Input.GetAxis("Mouse Y") * senssibiliterCamera * Time.deltaTime,

@@ -13,17 +13,18 @@ public class TrackPorte : MonoBehaviour
     }
     private void OnTriggerEnter()
     {
-        Debug.Log("L'objet est dans le trigger !");
+        Debug.Log("L'objet est rentrer le trigger !");
         animator1.SetBool("Ouvrir", true);
         animator2.SetBool("Ouvrir", true);
     }
 
     // appelée chaque frame pendant que l'objet est dans le trigger
-    //private void OnTriggerStay()
-    //{
-    //    Debug.Log("L'objet reste dans le trigger !");
-        
-    //}
+    private void OnTriggerStay(Collider other)
+    {
+        animator1.SetBool("Ouvrir", true);
+        animator2.SetBool("Ouvrir", true);
+        Debug.Log("L'objet est dans le trigger !");
+    }
 
     // appelée lorsqu'un autre collider sort du trigger
     private void OnTriggerExit(Collider other)

@@ -416,6 +416,7 @@ public class ExitStore : Node
         agent.destination = target.position;
         if (Vector3.Distance(agent.transform.position,target.position) < /*agent.stoppingDistance*/1)
         {
+            int currentEscaped = PlayerPrefs.GetInt("CurrentEscaped");
             state = NodeState.Success;
             NormalClientComponent normal = gameObject.GetComponent<NormalClientComponent>();
             normal.enabled= false;
@@ -458,8 +459,8 @@ public class RunOutOfStore : Node
             stealer.enabled = false;
             CompulsiveStealer compulsiveStealer = gameObject.GetComponent<CompulsiveStealer>();
             compulsiveStealer.enabled = false;
-
-
+            int currentEscaped = PlayerPrefs.GetInt("CurrentEscaped");
+            PlayerPrefs.SetInt("CurrentEscaped", ++currentEscaped);
             gameObject.SetActive(false);//Object Pool
             return state;
         }

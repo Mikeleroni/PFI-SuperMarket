@@ -16,7 +16,7 @@ public class HitByBaton : MonoBehaviour
         Vector3 raycastDirection = transform.forward; // direction vers l'avant de l'objet
 
         // Longueur du raycast
-        float raycastLength = 1.0f;
+        float raycastLength = 1.5f;
 
         // Raycast
         RaycastHit hitInfo;

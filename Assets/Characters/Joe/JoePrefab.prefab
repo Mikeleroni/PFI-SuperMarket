@@ -614,7 +614,7 @@ MonoBehaviour:
   - {fileID: 0}
   waitTime: 5
   agent: {fileID: 0}
-  exit: {fileID: 0}
+  exit: {fileID: 3799198674478953370, guid: d8387441044374841a3bbd9fb43ad752, type: 3}
 --- !u!114 &1499901049296442695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -629,7 +629,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destinations:
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 3799198674478953370, guid: d8387441044374841a3bbd9fb43ad752, type: 3}
   waitTime: 5
   speed: 4
   exit: {fileID: 0}
@@ -648,7 +648,7 @@ MonoBehaviour:
   destinations: []
   waitTime: 5
   speed: 4
-  exit: {fileID: 0}
+  exit: {fileID: 3799198674478953370, guid: d8387441044374841a3bbd9fb43ad752, type: 3}
 --- !u!1 &1795261283745673626
 GameObject:
   m_ObjectHideFlags: 0

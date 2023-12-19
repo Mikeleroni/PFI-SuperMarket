@@ -24,9 +24,10 @@ public class HitByBaton : MonoBehaviour
         {
             // Si le raycast frappe quelque chose
             Debug.DrawLine(raycastOrigin, hitInfo.point, Color.red);
-            if (hitInfo.collider.gameObject.tag == "Victime" && Input.GetKeyDown(KeyCode.Mouse0))
+            if (hitInfo.collider.gameObject.tag == "Voleur" && Input.GetKeyDown(KeyCode.Mouse0))
             {
                 Debug.Log("Vous avez tuer une " + hitInfo.collider.gameObject.tag);
+                hitInfo.collider.gameObject.SetActive(false);
                 // Faire tuer le voleur ***TODO***
             }
         }

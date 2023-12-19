@@ -16,9 +16,9 @@ public class NormalClientComponent : MonoBehaviour
     Node l5;
     Node l6;
     //Behaviour behaviourTree;
-    [SerializeField]Transform exit;
+    public Transform exit;
     // Start is called before the first frame update
-    private void Awake()
+    private void OnEnable()
     {
         animator = GetComponent<Animator>();    
         agent = GetComponent<NavMeshAgent>();
@@ -26,6 +26,22 @@ public class NormalClientComponent : MonoBehaviour
         l4 = new IsCheckingPocketsFinished(animator);
         l5 = new HandingMoney(animator);
         l6= new IsHandingFinished(animator);
+        l2.SetData("Check", true);
+        l4.SetData("Check", true);
+        l5.SetData("Handing", true);
+        l6.SetData("Handing", true);
+
+
+        SetupTree();
+    }
+    void Awake()
+    {
+        animator = GetComponent<Animator>();
+        agent = GetComponent<NavMeshAgent>();
+        l2 = new CheckPockets(animator);
+        l4 = new IsCheckingPocketsFinished(animator);
+        l5 = new HandingMoney(animator);
+        l6 = new IsHandingFinished(animator);
         l2.SetData("Check", true);
         l4.SetData("Check", true);
         l5.SetData("Handing", true);

@@ -910,7 +910,7 @@ MonoBehaviour:
   - {fileID: 0}
   waitTime: 5
   agent: {fileID: 0}
-  exit: {fileID: 0}
+  exit: {fileID: 3799198674478953370, guid: d8387441044374841a3bbd9fb43ad752, type: 3}
 --- !u!114 &2984129986387113593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -927,7 +927,7 @@ MonoBehaviour:
   - {fileID: 0}
   waitTime: 5
   speed: 6
-  exit: {fileID: 0}
+  exit: {fileID: 3799198674478953370, guid: d8387441044374841a3bbd9fb43ad752, type: 3}
 --- !u!114 &7115223555255862549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -935,7 +935,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2713607584907840304}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3768455a6d186834da64115ebd8a4875, type: 3}
   m_Name: 
@@ -943,7 +943,7 @@ MonoBehaviour:
   destinations: []
   waitTime: 5
   speed: 6
-  exit: {fileID: 0}
+  exit: {fileID: 3799198674478953370, guid: d8387441044374841a3bbd9fb43ad752, type: 3}
 --- !u!1 &2781884552178567564
 GameObject:
   m_ObjectHideFlags: 0

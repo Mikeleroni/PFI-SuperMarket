@@ -415,7 +415,7 @@ public class ExitStore : Node
         if (Vector3.Distance(agent.transform.position,target.position) < /*agent.stoppingDistance*/1)
         {
             state = NodeState.Success;
-            GameObject.Destroy(gameObject);//Object Pool
+            gameObject.SetActive(false);//Object Pool
             return state;
         }
         state = NodeState.Running;

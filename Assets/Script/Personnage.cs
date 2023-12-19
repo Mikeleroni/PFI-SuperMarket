@@ -8,6 +8,9 @@ public class Personnage : MonoBehaviour
     [SerializeField] float forceJump = 5;
     [SerializeField] float senssibiliterCamera = 1;
     [SerializeField] float gravity = 1;
+    [SerializeField] Animator animatorFrapper;
+    [SerializeField] AudioSource source;
+    [SerializeField] AudioClip clip;
 
     Vector3 rotationCamera = Vector3.zero;
     Vector3 jump = Vector3.zero;
@@ -26,6 +29,25 @@ public class Personnage : MonoBehaviour
     {
         Deplacement();
         RotationCamera();
+        Frapper();
+    }
+    void Frapper()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+
+            animatorFrapper.SetBool("Frapper", true);
+            if(!source.isPlaying)
+            {
+                source.PlayOneShot(clip);
+            }
+            
+        }
+        else
+        {
+            animatorFrapper.SetBool("Frapper", false);
+        }
+
     }
     void RotationCamera()
     {

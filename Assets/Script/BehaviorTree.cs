@@ -458,7 +458,8 @@ public class RunOutOfStore : Node
             stealer.enabled = false;
             CompulsiveStealer compulsiveStealer = gameObject.GetComponent<CompulsiveStealer>();
             compulsiveStealer.enabled = false;
-
+            int currentEscaped = PlayerPrefs.GetInt("CurrentEscaped");
+            PlayerPrefs.SetInt("CurrentEscaped", ++currentEscaped);
 
             gameObject.SetActive(false);//Object Pool
             return state;

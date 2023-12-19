@@ -14,9 +14,22 @@ public class StealerComponent : MonoBehaviour
     Node l2;
     Node l4;
     //Behaviour behaviourTree;
-    [SerializeField] Transform exit;
+    public Transform exit;
     // Start is called before the first frame update
-    private void Awake()
+    private void OnEnable()
+    {
+        animator = GetComponent<Animator>();
+        agent = GetComponent<NavMeshAgent>();
+        l2 = new CheckPockets(animator);
+        l4 = new IsCheckingPocketsFinished(animator);
+        l2.SetData("Check", true);
+        l4.SetData("Check", true);
+
+
+
+        SetupTree();
+    }
+     void Awake()
     {
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();

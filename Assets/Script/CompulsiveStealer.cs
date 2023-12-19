@@ -12,9 +12,9 @@ public class CompulsiveStealer : MonoBehaviour
     Node root;
     Animator animator;
     //Behaviour behaviourTree;
-    [SerializeField] Transform exit;
+    public Transform exit;
     // Start is called before the first frame update
-    private void Awake()
+    private void OnEnable()
     {
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();

@@ -6,7 +6,7 @@ public class ObjectPool : MonoBehaviour
 {
     private List<GameObject> pool = new List<GameObject>();
 
-    [SerializeField] GameObject[] objectsToPool;
+    public GameObject[] objectsToPool;
     [SerializeField] int[] quantiteParObjets;
 
     public static ObjectPool objectPoolInstance;

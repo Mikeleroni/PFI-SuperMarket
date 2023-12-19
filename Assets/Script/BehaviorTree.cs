@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Assertions;
+using UnityEngine.ProBuilder;
 using static UnityEngine.GraphicsBuffer;
 
 public enum NodeState { Running, Success, Failure }
@@ -283,6 +284,7 @@ public class GoAroundStore : Node
             }
             else
             {
+                agent.transform.rotation = Quaternion.Euler(0,0,0);
                 animator.SetBool("Searching", true);
                 return NodeState.Success;
             }
@@ -305,7 +307,7 @@ public class CheckPockets : Node
 
     public override NodeState Evaluate()
     {
-        Debug.Log(GetData("Check"));
+       // Debug.Log(GetData("Check"));
         if ((bool)GetData("Check"))
         {
           animator.SetBool("Searching",true);
@@ -325,7 +327,7 @@ public class IsCheckingPocketsFinished : Node
     }
     public override NodeState Evaluate()
     {
-        Debug.Log(animator.GetBool("Searching"));
+       // Debug.Log(animator.GetBool("Searching"));
         if (!((bool)GetData("Check")))
         {
             return NodeState.Success;
@@ -415,6 +417,8 @@ public class ExitStore : Node
         if (Vector3.Distance(agent.transform.position,target.position) < /*agent.stoppingDistance*/1)
         {
             state = NodeState.Success;
+            NormalClientComponent normal = gameObject.GetComponent<NormalClientComponent>();
+            normal.enabled= false;
             gameObject.SetActive(false);//Object Pool
             return state;
         }
@@ -446,10 +450,17 @@ public class RunOutOfStore : Node
         animator.SetFloat("Speed", 1.2f);
         agent.speed = speed;
         agent.destination = target.position;
+        gameObject.tag = "Voleur";
         if (Vector3.Distance(agent.transform.position, target.position) < /*agent.stoppingDistance*/1)
         {
             state = NodeState.Success;
-            GameObject.Destroy(gameObject);//Object Pool
+            StealerComponent stealer = gameObject.GetComponent<StealerComponent>();
+            stealer.enabled = false;
+            CompulsiveStealer compulsiveStealer = gameObject.GetComponent<CompulsiveStealer>();
+            compulsiveStealer.enabled = false;
+
+
+            gameObject.SetActive(false);//Object Pool
             return state;
         }
         state = NodeState.Running;

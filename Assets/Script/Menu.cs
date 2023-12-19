@@ -7,7 +7,7 @@ public class Menu : MonoBehaviour
 {
     public void LoadScene()
     {
-        SceneManager.LoadScene("SceneMik");
+        SceneManager.LoadScene("SceneAndrew2");
     }
 
     public void LoadNextInBuild()

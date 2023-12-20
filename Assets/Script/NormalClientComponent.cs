@@ -82,4 +82,9 @@ public class NormalClientComponent : MonoBehaviour
     {
         root.Evaluate();
     }
+
+    public void SetTomber()
+    {
+        gameObject.SetActive(false);
+    }
 }

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
+using UnityEngine.AI;
 using static Unity.VisualScripting.Member;
 
 public class HitByBaton : MonoBehaviour
@@ -27,8 +29,7 @@ public class HitByBaton : MonoBehaviour
             if (hitInfo.collider.gameObject.tag == "Voleur" && Input.GetKeyDown(KeyCode.Mouse0))
             {
                 Debug.Log("Vous avez tuer une " + hitInfo.collider.gameObject.tag);
-                hitInfo.collider.gameObject.SetActive(false);
-                // Faire tuer le voleur ***TODO***
+                //hitInfo.collider.gameObject.SetActive(false);
             }
         }
         else
@@ -37,6 +38,21 @@ public class HitByBaton : MonoBehaviour
             Vector3 endPosition = raycastOrigin + raycastDirection * raycastLength;
             Debug.DrawLine(raycastOrigin, endPosition, Color.green);
         }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Voleur")) 
+        {
+            Animator animator = other.gameObject.GetComponent<Animator>();
+            StealerComponent stealer = other.gameObject.GetComponent<StealerComponent>();
+            CompulsiveStealer compulsive = other.gameObject.GetComponent<CompulsiveStealer>();
+            NavMeshAgent agent = other.gameObject.GetComponent<NavMeshAgent>();
+            stealer.enabled = false;
+            compulsive.enabled = false;
+            agent.speed = 0f;
+            animator.SetBool("Dead", true);
+        }
+        
     }
     void Frapper()
     {

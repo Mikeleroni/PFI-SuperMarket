@@ -14,6 +14,7 @@ public class cutSceneManager : MonoBehaviour
     [SerializeField] CinemachineVirtualCamera cam;
     [SerializeField] VideoPlayer video;
     CinemachineTransposer transposer;
+    CinemachineComposer composer;
     
     public AnimationCurve FadeCurve = new AnimationCurve(new Keyframe(0, 1), new Keyframe(0.6f, 0.7f, -1.8f, -1.2f), new Keyframe(1, 0));
     private float _alpha = 1;
@@ -29,25 +30,24 @@ public class cutSceneManager : MonoBehaviour
         isDead = false;
         video.enabled = false;
         transposer = cam.GetCinemachineComponent<CinemachineTransposer>();
+        composer = cam.GetCinemachineComponent<CinemachineComposer>();
     }
 
     void Update()
     {
-        if(isDead)
-        {
-            cam.m_Lens.FieldOfView = Mathf.Lerp(cam.m_Lens.FieldOfView, 90, zoomSpeedFinish);
-
-            transposer.m_FollowOffset = Vector3.Lerp(transposer.m_FollowOffset, new Vector3(-5, 5, 5), 0.005f);
-            StartCoroutine(PlayVideo());
-            StartCoroutine(ChangeScene());
-        }
+        cam.m_Lens.FieldOfView = Mathf.Lerp(cam.m_Lens.FieldOfView, 90, zoomSpeedFinish);
+        isDead = true;
+        transposer.m_FollowOffset = Vector3.Lerp(transposer.m_FollowOffset, new Vector3(-5, 3, 2), 0.003f);
+        composer.m_TrackedObjectOffset = Vector3.Lerp(composer.m_TrackedObjectOffset, new Vector3(1200, 0, 25), 0.003f);
+        StartCoroutine(PlayVideo());
+        StartCoroutine(ChangeScene());
     }
 
     IEnumerator PlayVideo()
     {
         yield return new WaitForSeconds(3f);
-        Reset();
         video.enabled = true;
+        Reset();
     }
     IEnumerator ChangeScene()
     {

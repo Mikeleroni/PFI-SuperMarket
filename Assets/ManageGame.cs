@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ManageGame : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class ManageGame : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("CurrentEscaped") == 3)
         {
-            cutScene.isDead = true;
+            SceneManager.LoadScene(4);
         }
     }
 }

@@ -451,7 +451,6 @@ public class RunOutOfStore : Node
         animator.SetFloat("Speed", 1.2f);
         agent.speed = speed;
         agent.destination = target.position;
-        gameObject.tag = "Voleur";
         if (Vector3.Distance(agent.transform.position, target.position) < /*agent.stoppingDistance*/1)
         {
             state = NodeState.Success;

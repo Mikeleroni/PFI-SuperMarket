@@ -43,13 +43,14 @@ public class HitByBaton : MonoBehaviour
     {
         if(other.CompareTag("Voleur")) 
         {
+          //  other.tag = "";
             Animator animator = other.gameObject.GetComponent<Animator>();
             StealerComponent stealer = other.gameObject.GetComponent<StealerComponent>();
             CompulsiveStealer compulsive = other.gameObject.GetComponent<CompulsiveStealer>();
             NavMeshAgent agent = other.gameObject.GetComponent<NavMeshAgent>();
             stealer.enabled = false;
             compulsive.enabled = false;
-            agent.speed = 0f;
+            agent.enabled = false;   
             animator.SetBool("Dead", true);
         }
         

@@ -789,10 +789,10 @@ GameObject:
   - component: {fileID: 2984129986387113598}
   - component: {fileID: 2984129986387113599}
   - component: {fileID: 2984129986387113596}
-  - component: {fileID: 2984129986387113597}
   - component: {fileID: 2984129986387113594}
   - component: {fileID: 2984129986387113593}
   - component: {fileID: 7115223555255862549}
+  - component: {fileID: 4772380670720487074}
   m_Layer: 3
   m_Name: DavidPrefab
   m_TagString: Untagged
@@ -871,28 +871,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!195 &2984129986387113597
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2713607584907840304}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!114 &2984129986387113594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -944,6 +922,28 @@ MonoBehaviour:
   waitTime: 5
   speed: 6
   exit: {fileID: 3799198674478953370, guid: d8387441044374841a3bbd9fb43ad752, type: 3}
+--- !u!195 &4772380670720487074
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2713607584907840304}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.2
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &2781884552178567564
 GameObject:
   m_ObjectHideFlags: 0

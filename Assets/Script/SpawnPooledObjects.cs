@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Pool;
 public class SpawnPooledObjects : MonoBehaviour
 {
@@ -35,21 +36,27 @@ public class SpawnPooledObjects : MonoBehaviour
 
             if (typeofClient == 1)
             {
+                client.tag = "Untagged";
                 CompulsiveStealer compulsiveStealer = client.GetComponent<CompulsiveStealer>();
+                client.GetComponent<NavMeshAgent>().enabled = true;
                 compulsiveStealer.destinations = GenerateDestinations(typeofClient);
                 compulsiveStealer.exit = exit;
                 compulsiveStealer.enabled = true;
             }
             else if (typeofClient == 2)
             {
+                client.tag = "Untagged";
                 StealerComponent stealer = client.GetComponent<StealerComponent>();
+                client.GetComponent<NavMeshAgent>().enabled = true;
                 stealer.destinations = GenerateDestinations(typeofClient);
                 stealer.exit = exit;
                 stealer.enabled = true;
             }
             else
             {
+                client.tag = "Untagged";
                 NormalClientComponent normalClientTree = client.GetComponent<NormalClientComponent>();
+                client.GetComponent<NavMeshAgent>().enabled = true;
                 normalClientTree.destinations = GenerateDestinations(typeofClient);
                 normalClientTree.exit = exit;
                 normalClientTree.enabled = true;

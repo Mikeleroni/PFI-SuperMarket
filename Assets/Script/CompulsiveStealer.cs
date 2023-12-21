@@ -36,6 +36,10 @@ public class CompulsiveStealer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (animator.GetBool("Sprint"))
+        {
+            gameObject.tag = "Voleur";
+        }
         root.Evaluate();
     }
 

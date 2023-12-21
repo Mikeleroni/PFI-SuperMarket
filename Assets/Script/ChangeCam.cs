@@ -21,22 +21,22 @@ public class ChangeCam : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.V))
         {
-            camNb++;
-            renderer.sharedMaterial = material[camNb];
-        }
-        if(camNb >= material.Length)
-        {
-            camNb= 0;
+             camNb++;
+            if (camNb >= material.Length)
+            {
+                camNb = 0;
+                renderer.sharedMaterial = material[camNb];
+            }
             renderer.sharedMaterial = material[camNb];
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
-            camNb--;
-            renderer.sharedMaterial = material[camNb];
-        }
-        if (camNb < 0)
-        {
-            camNb = material.Length - 1;
+             camNb--;
+            if (camNb < 0)
+            {
+                camNb = material.Length - 1;
+                renderer.sharedMaterial = material[camNb];
+            }
             renderer.sharedMaterial = material[camNb];
         }
     }
